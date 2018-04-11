@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>초간단 계산기</title>
+    <script src="./calculator.js"></script>
+    <link rel="stylesheet" href="./calculator.css">
+
+</head>
+
+<body>
+    <table cellspacing="10px">
+
+        <td id="calcu" colspan="5">
+            <input type="text" id="inputTxt" onkeydown="return onInputKeyDown(event)" onkeyup="return onInputKeyup(this)" size="50" />
+        </td>
+        <tr>
+            <td id="result" colspan="5">0</td>
+            <!-- 출력창  -->
+        </tr>
+        <tr>
+            <td class="button" onclick="onBtnClick('bck')">←</td>
+            <td class="button" onclick="onBtnClick('clr')">C</td>
+            <td class="button" onclick="onBtnClick('+')">+</td>
+            <td class="button" onclick="onBtnClick('-')">-</td>
+            <td class="button" onclick="onBtnClick('cal')">=</td>
+        </tr>        
+    </table>
+
+</body>
+
+</html>
