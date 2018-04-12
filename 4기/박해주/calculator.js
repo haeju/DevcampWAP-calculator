@@ -46,7 +46,7 @@ function onBtnClick(data) {
             break;
 
         case "bck":
-            inputTxt.value = txt.substr(0, txt.length - 1);
+            backKey(inputTxt);
             break;
 
         case "clr":
@@ -58,6 +58,7 @@ function onBtnClick(data) {
             var lastTxt = txt.substr(txt.length - 1, 1);
             if (lastTxt !== "-" && lastTxt !== "+") {
                 document.getElementById("result").innerHTML = numberWithCommas(eval(txt));
+                inputTxt.selectionStart = inputTxt.selectionEnd = inputTxt.value.length;
             }
             else
                 alert('완성되지 않은 수식입니다.');
@@ -84,8 +85,19 @@ function insertText(txtObj, value) {
 
     txtObj.value = str.substr(0, currentPos) + value + str.substr(currentPos);
     txtObj.selectionStart = txtObj.selectionEnd = currentPos + 1;
-
 }
+
+function backKey(txtObj) {
+    var currentPos = 0;
+    var str = txtObj.value;
+
+    if (txtObj.selectionStart || txtObj.selectionStart == '0')
+        currentPos = txtObj.selectionStart;
+
+    txtObj.value = str.substr(0, currentPos - 1) + str.substr(currentPos);
+    txtObj.selectionStart = txtObj.selectionEnd = currentPos - 1;
+}
+
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
